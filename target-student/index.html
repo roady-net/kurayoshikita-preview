@@ -13108,6 +13108,17 @@ a.app-link-card[href]:not([href="#"]):hover {
     padding: 3px 12px;
 }
 
+/* リンクのないカード（BLEND）の案内文 */
+.app-note {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--c-text);
+    background: #f5f7f6;
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+
 /* 出席停止・登校許可証の表 */
 .ts-absence-table th {
     width: 11em;
@@ -13549,11 +13560,12 @@ a.app-link-card[href]:not([href="#"]):hover {
                                 <span class="app-desc">一斉メール配信システム</span>
                                 <span class="app-guide">登録方法（PDF）</span>
                             </a>
-                            <a href="#" class="app-link-card">
+                            <div class="app-link-card">
                                 <span class="app-icon">📱</span>
                                 <span class="app-name">BLEND</span>
                                 <span class="app-desc">出欠連絡・成績確認</span>
-                            </a>
+                                <span class="app-note">個別で設定方法が異なるため、学校に直接お問い合わせください。</span>
+                            </div>
                         </div>
                     </section>
 
