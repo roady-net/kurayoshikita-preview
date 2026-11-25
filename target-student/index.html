@@ -13108,13 +13108,118 @@ a.app-link-card[href]:not([href="#"]):hover {
     padding: 3px 12px;
 }
 
-.ts-file {
-    margin-top: 10px;
+/* 出席停止・登校許可証の表 */
+.ts-absence-table th {
+    width: 11em;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.7;
+}
+
+.ts-absence-table td {
+    padding: 20px 24px;
+    vertical-align: middle;
+}
+
+.ts-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ts-cell p {
+    margin: 0;
+}
+
+.ts-who {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--c-green);
+}
+
+.ts-who-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--c-green);
+    background: var(--c-accent-light);
+    border: 1px solid var(--c-accent);
+    border-radius: 4px;
+    padding: 1px 8px;
+}
+
+.ts-note {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--c-gray);
+}
+
+.ts-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.ts-tags span {
+    font-size: 13px;
+    line-height: 1.6;
+    background: #f5f7f6;
+    border: 1px solid var(--c-line);
+    border-radius: 999px;
+    padding: 2px 12px;
+}
+
+.ts-file-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    padding: 8px 18px 8px 10px;
+    border: 1px solid #b3261e;
+    border-radius: 6px;
+    color: #b3261e;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.ts-file-type {
+    font-size: 11px;
+    color: #fff;
+    background: #b3261e;
+    border-radius: 3px;
+    padding: 1px 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.ts-file-btn:hover,
+.ts-file-btn:focus-visible {
+    background: #b3261e;
+    color: #fff;
+}
+
+.ts-file-btn:hover .ts-file-type,
+.ts-file-btn:focus-visible .ts-file-type {
+    background: #fff;
+    color: #b3261e;
 }
 
 @media (max-width: 768px) {
     .app-link-grid {
         grid-template-columns: 1fr;
+    }
+
+    .ts-absence-table th {
+        width: 100%;
+        white-space: normal;
+    }
+
+    .ts-absence-table td {
+        padding: 16px;
     }
 }
 
@@ -13364,22 +13469,34 @@ a.app-link-card[href]:not([href="#"]):hover {
                         <h2>出席停止・登校許可証</h2>
                         <p>学校保健安全法で定められた感染症にかかった場合は、本人の健康回復と周囲への感染防止のため、出席停止となります。登校できるようになりましたら、下記の用紙を登校時に学校へ提出してください。</p>
                         <div class="history-table-wrap">
-                            <table class="wp-block-table">
+                            <table class="wp-block-table ts-absence-table">
                                 <tbody>
                                     <tr>
-                                        <th>インフルエンザ・<br>新型コロナウイルス感染症</th>
+                                        <th>インフルエンザ<br>新型コロナ</th>
                                         <td>
-                                            <strong>保護者の方が記入</strong>して提出してください。<br>
-                                            出席停止期間と登校可能日の目安は、用紙をご確認ください。
-                                            <div class="ts-file"><a href="./pdf/student/tokou_kyoka_influenza_corona.pdf" class="adm-file adm-file--pdf" target="_blank" rel="noopener"><span class="adm-file-type">PDF</span><span class="adm-file-label">登校許可証</span></a></div>
+                                            <div class="ts-cell">
+                                                <p class="ts-who"><span class="ts-who-label">記入</span>保護者の方</p>
+                                                <p class="ts-note">出席停止期間と登校可能日の目安は、用紙をご確認ください。</p>
+                                                <a href="./pdf/student/tokou_kyoka_influenza_corona.pdf" class="ts-file-btn" target="_blank" rel="noopener"><span class="ts-file-type">PDF</span>登校許可証</a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>その他の感染症</th>
+                                        <th>その他の<br>感染症</th>
                                         <td>
-                                            百日咳、麻疹（はしか）、流行性耳下腺炎（おたふくかぜ）、風疹、水痘（水ぼうそう）、咽頭結膜熱、医師が感染の恐れがあると認めた感染症（溶連菌感染症、感染性胃腸炎、マイコプラズマ感染症、手足口病など）<br>
-                                            <strong>医師に記入していただき</strong>、提出してください。
-                                            <div class="ts-file"><a href="./pdf/student/tokou_kyoka_sonota.pdf" class="adm-file adm-file--pdf" target="_blank" rel="noopener"><span class="adm-file-type">PDF</span><span class="adm-file-label">登校許可書</span></a></div>
+                                            <div class="ts-cell">
+                                                <p class="ts-who"><span class="ts-who-label">記入</span>医師</p>
+                                                <div class="ts-tags">
+                                                    <span>百日咳</span>
+                                                    <span>麻疹（はしか）</span>
+                                                    <span>流行性耳下腺炎（おたふくかぜ）</span>
+                                                    <span>風疹</span>
+                                                    <span>水痘（水ぼうそう）</span>
+                                                    <span>咽頭結膜熱</span>
+                                                </div>
+                                                <p class="ts-note">このほか、医師が感染の恐れがあると認めた感染症（溶連菌感染症、感染性胃腸炎、マイコプラズマ感染症、手足口病など）</p>
+                                                <a href="./pdf/student/tokou_kyoka_sonota.pdf" class="ts-file-btn" target="_blank" rel="noopener"><span class="ts-file-type">PDF</span>登校許可書</a>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
